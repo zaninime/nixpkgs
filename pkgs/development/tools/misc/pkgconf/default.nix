@@ -1,13 +1,16 @@
-{ stdenv, fetchurl }:
+{ stdenv, fetchurl, meson, ninja }:
 
 stdenv.mkDerivation rec {
   pname = "pkgconf";
   version = "1.6.3";
 
   src = fetchurl {
-    url = "https://distfiles.dereferenced.org/${pname}/${pname}-${version}.tar.xz";
-    sha256 = "04525vv0y849vvc2pi60g5wd9fjp1wbhra2lniifi82y1ldv7w31";
+    url = "https://git.dereferenced.org/${pname}/${pname}/archive/${pname}-${version}.tar.gz";
+    sha256 = "1jvs4zgwj56rsadpamzf41325mp75lb20n9iq02lhq6x4jr1pzav";
   };
+
+  nativeBuildInputs = [ meson ninja ];
+  mesonFlags = [ "-Dtests=false" ];
 
   meta = with stdenv.lib; {
     description = "Package compiler and linker metadata toolkit";
