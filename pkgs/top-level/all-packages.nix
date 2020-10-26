@@ -2150,6 +2150,8 @@ in
 
   icdiff = callPackage ../tools/text/icdiff {};
 
+  icon-slicer = callPackage ../tools/X11/icon-slicer { };
+
   ifm = callPackage ../tools/graphics/ifm {};
 
   interlock = callPackage ../servers/interlock {};
